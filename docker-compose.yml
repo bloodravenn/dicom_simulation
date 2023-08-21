@@ -1,0 +1,16 @@
+version: '3'
+services:
+  python_script:
+    image: python:3.8
+    volumes:
+      - ./dicom.py:/app/dicom.py
+      - ./requirements.txt:/app/requirements.txt
+    environment:
+      - DICOM_FOLDER=/app/dicom
+      - PACS_IP=192.168.0.162
+      - PACS_PORT=4242
+      - PACS_AE_TITLE=ORTHANC
+      - PACS_CERTIFICATE=/app/certificate.pem
+      - PRIVATE_KEY=/app/private_key.pem
+    working_dir: /app
+    command: sh -c "pip install -r requirements.txt && python dicom.py"
