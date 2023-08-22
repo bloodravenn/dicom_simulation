@@ -47,7 +47,7 @@ def send_dicom_to_pacs(dicom_folder, pacs_ip, pacs_port, pacs_ae_title):
         print('Failed to connect to the PACS server.')
 
 # Usage example
-dicom_folder = r'C:\Users\bloodraven\Desktop\02_Projects\DT\dicom'
+dicom_folder = r'/app/DICOM_images'
 pacs_ip = '192.168.0.162'  # Replace with the actual IP address
 pacs_port = 4242  # Replace with the actual port number
 pacs_ae_title = 'ORTHANC'  # Replace with the actual AE title
