@@ -14,9 +14,9 @@ def send_dicom_to_pacs(dicom_folder, pacs_ip, pacs_port, pacs_ae_title):
 
 
  # Add TLS layer for encryption
-    tls_context = build_context('TLS')
-    tls_context.load_cert_chain(pacs_certificate, private_key)
-    ae.add_supported_context(CTImageStorage, tls_context)
+    # tls_context = build_context('TLS')
+    # tls_context.load_cert_chain(pacs_certificate, private_key)
+    # ae.add_supported_context(CTImageStorage, tls_context)
 
     # Connect to the PACS server
     assoc = ae.associate(pacs_ip, pacs_port, ae_title=pacs_ae_title)
@@ -52,8 +52,8 @@ pacs_ip = '192.168.0.162'  # Replace with the actual IP address
 pacs_port = 4242  # Replace with the actual port number
 pacs_ae_title = 'ORTHANC'  # Replace with the actual AE title
 
-pacs_certificate = '/path/to/certificate.pem'  # Replace with the path to your certificate
-private_key = '/path/to/private_key.pem'  # Replace with the path to your private key
+# pacs_certificate = '/path/to/certificate.pem'  # Replace with the path to your certificate
+# private_key = '/path/to/private_key.pem'  # Replace with the path to your private key
 
 
 send_dicom_to_pacs(dicom_folder, pacs_ip, pacs_port, pacs_ae_title)
