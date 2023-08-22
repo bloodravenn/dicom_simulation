@@ -5,9 +5,9 @@ services:
     volumes:
       - ./dicom.py:/app/dicom.py
       - ./requirements.txt:/app/requirements.txt
-      - ./DICOM_images/:/app/DICOM_images/
+      - ./DICOM_images/:/app/DICOM_images
     environment:
-      - DICOM_FOLDER=/app/DICOM_images/
+      - DICOM_FOLDER=/app/DICOM_images
       - PACS_IP=192.168.0.162
       - PACS_PORT=4242
       - PACS_AE_TITLE=ORTHANC
