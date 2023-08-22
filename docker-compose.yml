@@ -1,17 +1,22 @@
-version: '3'
+version: '3'  # Specifies the version of Docker Compose syntax being used
+
 services:
   python_script:
-    image: python:3.8
-    volumes:
-      - ./dicom.py:/app/dicom.py
-      - ./requirements.txt:/app/requirements.txt
-      - ./DICOM_images/:/app/DICOM_images
-    environment:
-      - DICOM_FOLDER=/app/DICOM_images
-      - PACS_IP=192.168.0.162
-      - PACS_PORT=4242
-      - PACS_AE_TITLE=ORTHANC
-      - PACS_CERTIFICATE=/app/certificate.pem
-      - PRIVATE_KEY=/app/private_key.pem
-    working_dir: /app
-    command: sh -c "pip install -r requirements.txt && python dicom.py"
+    image: python:3.8  # Specifies the base Docker image to use for the container
+
+    volumes:  # Defines the volumes to mount from the host into the container
+      - ./dicom.py:/app/dicom.py  # Mounts the 'dicom.py' file from the host into the '/app/dicom.py' path in the container
+      - ./requirements.txt:/app/requirements.txt  # Mounts the 'requirements.txt' file from the host into the '/app/requirements.txt' path in the container
+      - ./DICOM_images/:/app/DICOM_images  # Mounts the 'DICOM_images' directory from the host into the '/app/DICOM_images' path in the container
+
+    environment:  # Specifies environment variables for the container
+      - DICOM_FOLDER=/app/DICOM_images  # Sets the 'DICOM_FOLDER' environment variable to '/app/DICOM_images'
+      - PACS_IP=192.168.0.162  # Sets the 'PACS_IP' environment variable to '192.168.0.162'
+      - PACS_PORT=4242  # Sets the 'PACS_PORT' environment variable to '4242'
+      - PACS_AE_TITLE=ORTHANC  # Sets the 'PACS_AE_TITLE' environment variable to 'ORTHANC'
+      - PACS_CERTIFICATE=/app/certificate.pem  # Sets the 'PACS_CERTIFICATE' environment variable to '/app/certificate.pem'
+      - PRIVATE_KEY=/app/private_key.pem  # Sets the 'PRIVATE_KEY' environment variable to '/app/private_key.pem'
+
+    working_dir: /app  # Sets the working directory inside the container to '/app'
+
+    command: sh -c "pip install -r requirements.txt && python dicom.py"  # Specifies the command to run when the container starts
